@@ -1,0 +1,63 @@
+﻿@page
+@model WebApp.Pages.Account.RegisterModel
+@{
+}
+<h3>User Registration</h3>
+<br />
+<div class="container border" style="padding:20px;">
+    <form method="post">
+        <div class="text-danger" asp-validation-summary="All"></div>
+        <div class="mb-3 row">
+            <div class="col-2">
+                <label asp-for="_RegisterViewModel.Email"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="_RegisterViewModel.Email" class="form-control" />
+                <span class="text-bg-danger" asp-validation-for="_RegisterViewModel.Email"></span>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <div class="col-2">
+                <label asp-for="_RegisterViewModel.Password"></label>
+            </div>
+            <div class="col-5">
+                <input type="password" asp-for="_RegisterViewModel.Password" class="form-control" />
+                <span class="text-bg-danger" asp-validation-for="_RegisterViewModel.Password"></span>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <div class="col-2">
+                <label asp-for="_RegisterViewModel.ConfirmPassword"></label>
+            </div>
+            <div class="col-5">
+                <input type="password" asp-for="_RegisterViewModel.ConfirmPassword" class="form-control" />
+                <span class="text-bg-danger" asp-validation-for="_RegisterViewModel.ConfirmPassword"></span>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <div class="col-2">
+                <label asp-for="_RegisterViewModel.Department"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="_RegisterViewModel.Department" class="form-control" />
+                <span class="text-bg-danger" asp-validation-for="_RegisterViewModel.Department"></span>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <div class="col-2">
+                <label asp-for="_RegisterViewModel.Position"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="_RegisterViewModel.Position" class="form-control" />
+                <span class="text-bg-danger" asp-validation-for="_RegisterViewModel.Position"></span>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <div class="col-2">
+                <input type="submit" class="btn btn-primary" value="Register" />
+            </div>
+            <div class="col-5">
+            </div>
+        </div>
+    </form>
+</div>
