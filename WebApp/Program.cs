@@ -40,7 +40,9 @@ builder.Services.ConfigureApplicationCookie(options =>
 });
 
 builder.Services.Configure<SmtpSetting>(builder.Configuration.GetSection("SMTP"));
+builder.Services.Configure<MyAppSettings>(builder.Configuration.GetSection("AppSettings"));
 builder.Services.AddSingleton<IEmailService, EmailService>();
+builder.Services.AddSingleton<IMyAppService, MyAppService>();
 
 
 var app = builder.Build();

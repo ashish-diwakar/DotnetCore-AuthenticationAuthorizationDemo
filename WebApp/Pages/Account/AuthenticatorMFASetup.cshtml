@@ -1,0 +1,70 @@
+﻿@page
+@model WebApp.Pages.Account.AuthenticatorMFASetupModel
+@{
+}
+
+
+@if (Model.authenticatorMFASetupViewModel.IsSucceed)
+{
+    <div class="alert alert-success" role="alert">
+        Your Authenticator App has been setup successfully!
+    </div>
+}
+else
+{
+    <h3>Step 1:</h3>
+    <p>
+        Please enter the key to your Authenticator App:
+    </p>
+    <p>
+       @*  <img src="@Model.authenticatorMFASetupViewModel.QrCodeImageData"
+             style="width: 100%; max-width: 220px"
+             title="Scan this QR Code with your Authenticator app" /> *@
+        <div id="qrcode" style="width: 100%; max-width: 220px"
+             title="Scan this QR Code with your Authenticator app"></div>
+
+        <div title="Manual entry code to use instead of QR code"
+             class="text-secondary">
+            @Model.authenticatorMFASetupViewModel.SharedKey
+        </div>
+    </p>
+
+    <br />
+    <h3>Step 2:</h3>
+
+    <p>
+        Please enter the code from your Authenticator App:
+    </p>
+    <div class="container border" style="padding:20px;">
+        <form method="post">
+            <div class="text-danger" asp-validation-summary="All"></div>
+            <div class="mb-3 row">
+                <div class="col-2">
+                    <label asp-for="authenticatorMFASetupViewModel.SecurityCode"></label>
+                </div>
+                <div class="col-5">
+                    <input type="password" asp-for="authenticatorMFASetupViewModel.SecurityCode" class="form-control" />
+                    <span class="text-bg-danger" asp-validation-for="authenticatorMFASetupViewModel.SecurityCode"></span>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="col-2">
+                    <input type="submit" class="btn btn-primary" value="Verify" />
+                </div>
+                <div class="col-5">
+                    <input type="hidden" asp-for="authenticatorMFASetupViewModel.SharedKey" class="form-control" />
+                </div>
+            </div>
+        </form>
+    </div>
+}
+<script type="text/javascript">
+    var qrcode = new QRCode(document.getElementById("qrcode"), {
+        text: '@Model.authenticatorMFASetupViewModel.QrCodeImageData', // The data to encode
+        width: 128,
+        height: 128,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H // Error correction level
+    });
+</script>

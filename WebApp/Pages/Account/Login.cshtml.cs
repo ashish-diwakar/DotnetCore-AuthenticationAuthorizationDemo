@@ -32,10 +32,14 @@ namespace WebApp.Pages.Account
             }
             else
             {
-                if(result.RequiresTwoFactor)
+                if (result.RequiresTwoFactor) // Using Authenticator Security Key
                 {
-                    return RedirectToPage("/Account/LoginTwoFactor", new { RememberMe = Credential.RememberMe, Email = Credential.Email });    
+                    return RedirectToPage("/Account/LoginTwoFactorWithAuthenticator", new { RememberMe = Credential.RememberMe, Email = Credential.Email });
                 }
+                //else if (result.RequiresTwoFactor) // Using Email OTP
+                //{
+                //    return RedirectToPage("/Account/LoginTwoFactor", new { RememberMe = Credential.RememberMe, Email = Credential.Email });
+                //}
                 else if (result.IsLockedOut)
                 {
                     ModelState.AddModelError("Login", "Account locked out.");

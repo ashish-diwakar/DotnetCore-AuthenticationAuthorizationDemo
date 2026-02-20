@@ -1,0 +1,31 @@
+﻿@page
+@model WebApp.Pages.Account.LoginTwoFactorWithAuthenticatorModel
+@{
+}
+
+
+<h3>Please enter the security code from your Authenticator App:</h3>
+<br />
+<div class="container border" style="padding:20px;">
+    <form method="post">
+        <div class="text-danger" asp-validation-summary="All"></div>
+        <div class="mb-3 row">
+            <div class="col-2">
+                <label asp-for="LoginTwoFactorWithAuthenticator.SecurityCode"></label>
+            </div>
+            <div class="col-5">
+                <input type="password" asp-for="LoginTwoFactorWithAuthenticator.SecurityCode" class="form-control" />
+                <span class="text-bg-danger" asp-validation-for="LoginTwoFactorWithAuthenticator.SecurityCode"></span>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <div class="col-2">
+                <input type="submit" class="btn btn-primary" value="Verify" />
+            </div>
+            <div class="col-5">
+                <input type="hidden" asp-for="LoginTwoFactorWithAuthenticator.Email" class="form-check-input" />
+                <input type="hidden" asp-for="LoginTwoFactorWithAuthenticator.RememberMe" class="form-check-input" />
+            </div>
+        </div>
+    </form>
+</div>
